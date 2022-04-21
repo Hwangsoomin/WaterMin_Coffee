@@ -9,6 +9,14 @@ export class CoffeeDao {
     return coffees;
   };
 
+  static findCoffeeById = async (id) => {
+    const sql = 'SELECT * FROM coffee WHERE _id = ?';
+    const param = [id];
+    const [coffee] = await Mysql.execute(sql, param);
+
+    return coffee;
+  };
+
   static createCoffee = async (coffee) => {
     const sql =
       'INSERT INTO coffee(name, description, calory, protein, sodium, caffeine) VALUES(?,?,?,?,?,?)';
