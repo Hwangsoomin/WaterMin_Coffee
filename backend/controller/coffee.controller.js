@@ -23,4 +23,15 @@ export class CoffeeController {
       next(err);
     }
   };
+
+  static removeCoffee = async (req, res, next) => {
+    try {
+      const result = await CoffeeService.removeCoffee(req.params);
+      return res
+        .status(200)
+        .json(new Response(200, 'success', '커피 삭제 성공', result));
+    } catch (err) {
+      next(err);
+    }
+  };
 }

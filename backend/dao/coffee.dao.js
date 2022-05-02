@@ -30,4 +30,11 @@ export class CoffeeDao {
     ];
     return await Mysql.execute(sql, param);
   };
+
+  static removeCoffee = async (id) => {
+    const sql = 'DELETE FROM coffee WHERE _id = ?';
+    const param = [id];
+
+    return await Mysql.execute(sql, param);
+  };
 }

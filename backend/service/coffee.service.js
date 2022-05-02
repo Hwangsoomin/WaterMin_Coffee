@@ -20,4 +20,13 @@ export class CoffeeService {
     await CoffeeDao.createCoffee(req);
     return;
   };
+
+  static removeCoffee = async (req) => {
+    const coffee = await CoffeeDao.findCoffeeById(req.id);
+    if (coffee.length === 0) {
+      throw new handleError(404, 'Coffee Id Not Found');
+    }
+
+    await CoffeeDao.removeCoffee(req.id);
+  };
 }
